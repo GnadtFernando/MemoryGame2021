@@ -22,66 +22,67 @@ struct ContentView: View {
                 }
             }
             .foregroundColor(.red)
-            Spacer()
-            HStack{
-                remove
-                Spacer()
-                add
-            }
-            .font(.largeTitle)
-            .padding(.horizontal)
+            //            Spacer()
+            //            HStack{
+            //                remove
+            //                Spacer()
+            //                add
+            //            }
+            //            .font(.largeTitle)
+            //            .padding(.horizontal)
         }
         .padding(.horizontal)
     }
     
-    var remove: some View {
-        Button {
-            if emojiCount > 1{
-                emojiCount -= 1
-            }
-        } label: {
-            Image(systemName: "minus.circle")
-               
-        }
-    }
-    var add: some View{
-        Button  {
-            if emojiCount < emojis.count{
-                emojiCount += 1
-            }
-        } label: {
-            Image(systemName: "plus.circle")
-                
-        }
-    }
-}
-
-struct CardView: View {
-    @State var isFaceUp: Bool = true
-    var content: String
+    //    var remove: some View {
+    //        Button {
+    //            if emojiCount > 1{
+    //                emojiCount -= 1
+    //            }
+    //        } label: {
+    //            Image(systemName: "minus.circle")
+    //
+    //        }
+    //    }
+    //    var add: some View{
+    //        Button  {
+    //            if emojiCount < emojis.count{
+    //                emojiCount += 1
+    //            }
+    //        } label: {
+    //            Image(systemName: "plus.circle")
+    //
+    //        }
+    //    }
+    //}
     
-    var body: some View {
-        ZStack {
-            let shape =  RoundedRectangle(cornerRadius: 25.0)
-            if isFaceUp{
-                shape.fill().foregroundColor(.white)
-                shape.strokeBorder(lineWidth: 3)
-                Text(content).font(.largeTitle)
-            } else {
-               shape.fill()
+    struct CardView: View {
+        @State var isFaceUp: Bool = true
+        var content: String
+        
+        var body: some View {
+            ZStack {
+                let shape =  RoundedRectangle(cornerRadius: 25.0)
+                if isFaceUp{
+                    shape.fill().foregroundColor(.white)
+                    shape.strokeBorder(lineWidth: 3)
+                    Text(content).font(.largeTitle)
+                } else {
+                    shape.fill()
                 }
-        }.onTapGesture {
-            isFaceUp = !isFaceUp
+            }.onTapGesture {
+                isFaceUp = !isFaceUp
             }
         }
     }
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .preferredColorScheme(.dark)
-        ContentView()
-            .preferredColorScheme(.light)
+    
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+                .preferredColorScheme(.dark)
+            ContentView()
+                .preferredColorScheme(.light)
+        }
     }
 }
